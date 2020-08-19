@@ -1,11 +1,11 @@
 {
   "nativescript": {
     "id": "org.nativescript.ErasmusPlus",
-    "tns-android": {
-      "version": "6.5.0"
-    },
     "tns-ios": {
       "version": "6.5.0"
+    },
+    "tns-android": {
+      "version": "6.5.3"
     }
   },
   "description": "NativeScript Application",
@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@angular/animations": "~9.1.0",
-    "@angular/common": "~9.1.0", 
+    "@angular/common": "~9.1.0",
     "@angular/compiler": "~9.1.0",
     "@angular/core": "~9.1.0",
     "@angular/forms": "~9.1.0",
@@ -26,6 +26,7 @@
     "@angular/router": "~9.1.0",
     "@nativescript/angular": "~9.0.0",
     "@nativescript/theme": "~2.3.0",
+    "nativescript-plugin-firebase": "^10.5.2",
     "reflect-metadata": "~0.1.12",
     "rxjs": "^6.5.0",
     "tns-core-modules": "~6.5.0",

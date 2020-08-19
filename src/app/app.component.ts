@@ -1,14 +1,30 @@
 
 // tslint:disable:max-line-length
 // >> webview-ts-events
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { WebView, LoadEventData } from "tns-core-modules/ui/web-view";
+const firebase = require("nativescript-plugin-firebase");
 
 @Component({
     moduleId: module.id,
     templateUrl: "./app.component.html"
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
+
+    ngOnInit() {
+        firebase.init({
+          // Optionally pass in properties for database, authentication and cloud messaging,
+          // see their respective docs.
+        }).then(
+          () => {
+            console.log("firebase.init done");
+          },
+          error => {
+            console.log(`firebase.init error: ${error}`);
+          }
+        );
+      }
+
     webViewSrc = "http://erasmusplus.tn";
 
     onLoadStarted(args: LoadEventData) {
