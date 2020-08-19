@@ -1,0 +1,11 @@
+<!-- https://docs.nativescript.org/angular/core-concepts/angular-navigation.html#page-router-outlet
+<page-router-outlet></page-router-outlet> -->
+
+<GridLayout rows="*" columns="*" sdkExampleTitle sdkToggleNavButton>
+    <!-- >> web-events-html -->
+    <WebView [src]="webViewSrc"
+             (loadStarted)="onLoadStarted($event)"
+             (loadFinished)="onLoadFinished($event)">
+    </WebView>
+    <!-- << web-events-html -->
+</GridLayout>
