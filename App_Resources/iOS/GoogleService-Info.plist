@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:965782609174:ios:b6db866b046596c302c437</string>
+	<string>1:965782609174:ios:7dcf4235139ae5c202c437</string>
 	<key>DATABASE_URL</key>
 	<string>https://erasmus-plus-aceb9.firebaseio.com</string>
 </dict>

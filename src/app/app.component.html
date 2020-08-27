@@ -3,9 +3,12 @@
 
 <GridLayout rows="*" columns="*" sdkExampleTitle sdkToggleNavButton>
     <!-- >> web-events-html -->
-    <WebView [src]="webViewSrc"
-             (loadStarted)="onLoadStarted($event)"
-             (loadFinished)="onLoadFinished($event)">
+    <WebView id="webview" (loadStarted)="onLoadStarted($event)"
+(loadFinished)="onLoadFinished($event)" [src]="webViewSrc">
     </WebView>
     <!-- << web-events-html -->
 </GridLayout>
+
+<!--
+(loadStarted)="onLoadStarted($event)"
+(loadFinished)="onLoadFinished($event)" -->
