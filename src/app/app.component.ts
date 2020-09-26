@@ -3,21 +3,24 @@
 // >> webview-ts-events
 import { Component, OnInit } from "@angular/core";
 import { WebView, LoadEventData } from "tns-core-modules/ui/web-view";
-import { Page, Observable } from "@nativescript/core/ui/page/page";
-import { Label } from "tns-core-modules/ui/label";
-import { StackLayout } from "tns-core-modules/ui/layouts/stack-layout";
-import { GridLayout } from "tns-core-modules/ui/layouts/grid-layout";
-
+import { exit } from "nativescript-exit";
+import { android, AndroidApplication, AndroidActivityBundleEventData, AndroidActivityEventData } from "tns-core-modules/application";
+// import * as application from "application";
+import { displayedEvent, exitEvent, launchEvent, lowMemoryEvent,
+    orientationChangedEvent, resumeEvent, suspendEvent, uncaughtErrorEvent,
+    ApplicationEventData, LaunchEventData, OrientationChangedEventData, UnhandledErrorEventData,
+    on as applicationOn, run as applicationRun } from "tns-core-modules/application";
 // import { isAndroid, isIOS } from "platform";
 var firebase = require("nativescript-plugin-firebase");
 const dialogs = require("ui/dialogs");
+
 @Component({
     moduleId: module.id,
     templateUrl: "./app.component.html"
 })
 
-
 export class AppComponent implements OnInit{
+
 
     ngOnInit() {
         firebase.init({
@@ -30,7 +33,7 @@ export class AppComponent implements OnInit{
               let weblink = message.data.weblink;
               this.webViewSrc = weblink;
               if(this.webview != undefined){
-                
+
                 dialogs.confirm({
                     // title: "Push message: " + (message.title !== undefined ? message.title : ""),
                     title: "Une Nouvelle Actualite Est Ajoutee",
@@ -54,9 +57,19 @@ export class AppComponent implements OnInit{
           }
         );
 
-        console.log("on init "+this.webViewSrc);
+        applicationOn(suspendEvent, (args: ApplicationEventData) => {
+            if (android) {
+                android.on(AndroidApplication.activityPausedEvent, function (args: AndroidActivityEventData) {
+                    console.log("on suspend Event: " + args.eventName + ", Activity: " + args.activity);
+                    exit();
+                });
+            } else{
+                exit();
+            }
+        });
 
     };
+
 
     // Retrieve Firebase Messaging object.
     webViewSrc = "http://erasmusplus.tn";
@@ -94,19 +107,8 @@ export class AppComponent implements OnInit{
      reloadWebview() {
       this.webview.reload();
      };
-  
-//   onPageLoaded(args: EventData):Page {
-//     console.log("Page loaded");
-//     const page = args.object as Page;
-//     console.log("Page reference from loaded event: ", page);
-//     return page;
-// }
-
-    // setWebViewSrc(src){
-    //   webViewSrc=src;
-    // }
-
 
   }
-// << webview-ts-events
+
+
 
